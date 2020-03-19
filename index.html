@@ -10,14 +10,34 @@
     <div id="container">
         <h1>Evolução do Covid-19 no Brasil</h1>
         <div id="button-container">
-            <a class="button" href="#" onClick="selectMap('line-chart.html')">Gráfico de Linhas</a>
-            <a class="button" href="#" onClick="selectMap('map.html')">Mapa interativo</a>
+            <a id="line-button" class="button active">Gráfico de Linhas</a>
+            <a id="map-button"class="button">Mapa interativo</a>
         </div>
-        <iframe id="chart" src="" frameborder="0"></iframe>
+        <iframe id="chart" src="line-chart.html" frameborder="0"></iframe>
     </div>
 </body>
 </html>
 <script>
+    window.onload = function() {
+        document.getElementById('line-button').onclick = function() {
+            selectMap('line-chart.html');
+            cleanButtons();
+            this.classList.add('active');
+        };
+
+        document.getElementById('map-button').onclick = function() {
+            selectMap('map.html');
+            cleanButtons();
+            this.classList.add('active');
+        };
+    }
+
+    function cleanButtons() {
+        document.querySelectorAll('.button').forEach(function(item) {
+            item.classList.remove('active');
+        });
+    }
+
     function selectMap(src) {
         document.getElementById('chart').src = src;
     }   
@@ -48,7 +68,7 @@
         justify-content: center;
     }
 
-    .button:focus {
+    .button.active {
         background-color: #192a56;;
     }
 
