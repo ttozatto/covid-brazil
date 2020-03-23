@@ -7,12 +7,14 @@
     <title>Covid-19 no Brasil</title>
 </head>
 <body>
-    <div id="container">
+    <div id="header">
         <h1>Evolução do Covid-19 no Brasil</h1>
         <div id="button-container">
             <a id="line-button" class="button active">Gráfico de Linhas</a>
             <a id="map-button"class="button">Mapa interativo</a>
         </div>
+    </div>
+    <div id="chart-container">
         <iframe id="chart" src="line-chart.html" frameborder="0"></iframe>
     </div>
 </body>
@@ -43,23 +45,35 @@
     }   
 </script>
 <style>
+    html {
+        height: 100%;
+    }
+
     body {
         font-family: 'Roboto', sans-serif;
         flex: 1;
+        flex-direction: column;
+        margin: 0;
         display: flex;
+        height: 100%;
         background-color: #ecf0f1;
         justify-content: center;
     }
 
+    #chart-container {
+        display: flex;
+        flex: 1;
+        padding: 30px
+    }
+
     #chart {
-        height: 500px;
-        width: 100%;
+        display: flex;
+        flex: 1;
     }
 
     #button-container {
-        margin-top: 40px;
+        flex-direction: row;
         display: flex;
-        padding: 10px 0;
         border: none;
         flex-wrap: wrap;
         flex-direction: row;
@@ -73,10 +87,11 @@
     }
 
     .button {
+        align-self: flex-end;
         white-space: nowrap;
         cursor: pointer;
         text-decoration: none;
-        margin: 10px;
+        margin: 0 10px;
         border-radius: 7px;
         color: #fff;
         padding: 10px 20px;
@@ -85,13 +100,16 @@
 
     h1 {
         margin: 0;
+        margin-left: 30px;
         color: #192a56;
     }
 
-    #container {
-        padding: 20px;
-        margin-top: 5%;
-        width: 70%;
+    #header {
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+        padding: 20px 0;
+        width: 100%;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         background-color: #fff;
     }
